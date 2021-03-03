@@ -20,3 +20,11 @@ Change `GitHubMail` and `GitHubName` environment variable as your own
 And That's it.
 
 ©ElytrA8
+
+#Terms Of Use 
+
+This is Only For debugging Purposes.
+
+If you use It For Deploying Your Account Might Get Ban.
+
+We Are Not Responsible For Any Action Taken By GitHub.
