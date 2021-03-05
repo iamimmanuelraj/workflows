@@ -17,10 +17,6 @@ Docker_Username:- Your DockerHub Username
 Docker_Password:- Your DockerHub Password
 ```
 
-Then edit .github/workflows/*.yml
-
-Change `GitHubMail` and `GitHubName` environment variable as your own
-
 And That's it.
 
 ©ElytrA8
