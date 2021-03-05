@@ -31,4 +31,4 @@ We Are Not Responsible For Any Action Taken By GitHub.
 
 # Credits
 
-[rokibhasansagar](https://github.com/rokibhasansagar) for infinite help
+[rokibhasansagar](https://github.com/rokibhasansagar) & [henloboi](https://github.com/JamieHoSzeYui) for infinite help.
