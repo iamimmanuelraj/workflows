@@ -7,7 +7,6 @@ on:
   workflow_dispatch:
    
 env:
-  # Change these values if you have forked it for your own works
   GitHubMail: ${{ secrets.GitHubMail }}
   GitHubName: ${{ secrets.GitHubName }}
 
