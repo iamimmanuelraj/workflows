@@ -1,6 +1,6 @@
-# mirrorbot-workflow
+# userbot-workflow
 
-You can use [this repo](https://github.com/lzzy12/python-aria-mirror-bot) as a template
+You can use [this repo](https://github.com/IMMANUEL44/userbot-ftg) as a template
 
 First setup everything then push to your private Repository
 
@@ -13,13 +13,11 @@ GH_TOKEN :- Your github personal access token, from https://github.com/settings/
 MIRROR_REPOSLUG :- Your Secret Repository, as in "<username>/<reponame>"
 GitHubName:- Your GitHub UserName
 GitHubMail:- You GitHub Email Address
-Docker_Username:- Your DockerHub Username
-Docker_Password:- Your DockerHub Password
 ```
 
 And That's it.
 
-©ElytrA8
+©IMMANUEL44
 
 # Terms Of Use 
 
@@ -31,4 +29,4 @@ We Are Not Responsible For Any Action Taken By GitHub.
 
 # Credits
 
-[rokibhasansagar](https://github.com/rokibhasansagar) & [henloboi](https://github.com/JamieHoSzeYui) for infinite help.
+[rokibhasansagar](https://github.com/rokibhasansagar) & [henloboi](https://github.com/JamieHoSzeYui) & [ElytrA8](https://github.com/ElytrA8) for infinite help.
