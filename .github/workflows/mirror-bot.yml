@@ -1,4 +1,4 @@
-name: MirrorBot Environment
+name: UserBot Environment
 
 on:
   push:
@@ -29,19 +29,13 @@ jobs:
         run: |
           git clone https://${GitHubName}:${{ secrets.GH_TOKEN }}@github.com/${{ secrets.MIRROR_REPOSLUG }} source
 
-      - name: Compile The Mirroring Docker Container
-        run: |
-          cd source || exit 1
-          echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
-          docker container prune --force || true
-          docker build . --rm --force-rm --compress --no-cache=true --pull --file Dockerfile -t mirror-bot
-          docker image ls
-
-      - name: running Docker
+      - name: Run Bot
         timeout-minutes: 340
         continue-on-error: true
         run: |
-          docker run --privileged --rm -i mirror-bot
+          cd source
+          pip3 install --no-warn-script-location -r requirements.txt
+          bash install.sh --no-web
 
       - name: Loop Workflow
         continue-on-error: true
@@ -53,4 +47,3 @@ jobs:
           git add looper.txt
           git commit -m "Workflow : Loop at $(date -u +%D-%T%P)"
           git push -q https://${{ secrets.GH_TOKEN }}@github.com/${GITHUB_REPOSITORY} HEAD:main
-
