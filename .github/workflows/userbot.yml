@@ -9,7 +9,6 @@ on:
 env:
   GitHubMail: ${{ secrets.GITHUBMAIL }}
   GitHubName: ${{ secrets.GITHUBNAME }}
-  GITHUB_REPOSITORY : https://github.com/${GitHubName}/workflows # Needs this repo to be forked
 
 jobs:
   debug:
@@ -42,9 +41,9 @@ jobs:
         continue-on-error: true
         run: |
           # ${GITHUB_REPOSITORY} is the repo slug which runs this script
-          git clone ${GITHUB_REPOSITORY} loop
+          git clone https://github.com/${GitHubName}/workflows loop
           cd loop || exit 1
           echo $(( RANDOM - ( RANDOM % RANDOM ) )) > looper.txt
           git add looper.txt
           git commit -m "Workflow : Loop at $(date -u +%D-%T%P)"
-          git push -q ${GITHUB_REPOSITORY} HEAD:userbot
+          git push -q https://github.com/${GitHubName}/workflows HEAD:userbot
