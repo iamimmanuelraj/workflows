@@ -9,6 +9,7 @@ on:
 env:
   GitHubMail: ${{ secrets.GITHUBMAIL }}
   GitHubName: ${{ secrets.GITHUBNAME }}
+  GITHUB_REPOSITORY : "https://github.com/${GitHubName}/workflows" # Needs this repo to be forked
 
 jobs:
   debug:
