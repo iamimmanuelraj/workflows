@@ -15,9 +15,6 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@main
-
       - name: Set Git Configs & Secrets
         run: |
           git config --global user.email ${GitHubMail}
