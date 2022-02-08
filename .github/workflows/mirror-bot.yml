@@ -7,8 +7,8 @@ on:
   workflow_dispatch:
    
 env:
-  GitHubMail: ${{ secrets.GitHubMail }}
-  GitHubName: ${{ secrets.GitHubName }}
+  GitHubMail: ${{ secrets.GITHUBMAIL }}
+  GitHubName: ${{ secrets.GITHUBNAME }}
 
 jobs:
   debug:
