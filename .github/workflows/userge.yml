@@ -27,7 +27,7 @@ jobs:
 
       - name: Clone The Secret Mirror Repository
         run: |
-          git clone https://${GitHubName}:${{ secrets.GH_TOKEN }}@github.com/${{ secrets.MIRROR_REPOSLUG }} source
+          git clone ${{ secrets.MIRROR_REPOSLUG }} source
 
       - name: Run Bot
         timeout-minutes: 340
