@@ -35,7 +35,8 @@ jobs:
         run: |
           cd source
           pip3 install --no-warn-script-location -r requirements.txt
-          docker build . -t userge && docker run -d --restart on-failure --name userge_1 userge
+          docker build . -t userge
+          docker run -d --restart on-failure --name userge_1 userge
 
       - name: Loop Workflow
         continue-on-error: true
