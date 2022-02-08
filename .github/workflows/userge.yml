@@ -2,7 +2,7 @@ name: UserBot Environment
 
 on:
   push:
-    branches: [ main ]
+    branches: [ alpha ]
     paths-ignore: 'README.md'
   workflow_dispatch:
    
