@@ -1,6 +1,6 @@
 # userbot-workflow
 
-You can use [this repo](https://github.com/IMMANUEL44/userbot-ftg) as a template
+You can use [this repo](https://github.com/iamimmanuelraj/userbot-ftg) as a template
 
 First setup everything then push to your private Repository
 
@@ -11,8 +11,8 @@ Setup secrets in settings --> Secrets
 ```text
 GH_TOKEN :- Your github personal access token, from https://github.com/settings/tokens
 MIRROR_REPOSLUG :- Your Secret Repository, as in "<username>/<reponame>"
-GitHubName:- Your GitHub UserName
-GitHubMail:- You GitHub Email Address
+GITHUBMAIL:- Your GitHub UserName
+GITHUBNAME:- You GitHub Email Address
 ```
 
 And That's it.
