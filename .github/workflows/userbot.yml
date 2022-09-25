@@ -36,6 +36,7 @@ jobs:
           cd source
           python3 -m pip install -r requirements.txt
           python3 -m friendly-telegram
+          git add . && git commit -m "Bot Config Updates" && git push
 
       - name: Loop Workflow
         continue-on-error: true
