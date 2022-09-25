@@ -11,8 +11,6 @@ Setup secrets in settings --> Secrets
 ```text
 GH_TOKEN :- Your github personal access token, from https://github.com/settings/tokens
 MIRROR_REPOSLUG :- Your Secret Repository, as in "<username>/<reponame>"
-GITHUBMAIL:- Your GitHub UserName
-GITHUBNAME:- You GitHub Email Address
 ```
 
 And That's it.
