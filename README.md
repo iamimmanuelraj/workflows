@@ -15,7 +15,7 @@ MIRROR_REPOSLUG :- Your Secret Repository, as in "<username>/<reponame>"
 
 And That's it.
 
-©IMMANUEL44
+©iamimmanuelraj
 
 # Terms Of Use 
 
@@ -27,4 +27,4 @@ We Are Not Responsible For Any Action Taken By GitHub.
 
 # Credits
 
-[rokibhasansagar](https://github.com/rokibhasansagar) & [henloboi](https://github.com/JamieHoSzeYui) & [ElytrA8](https://github.com/ElytrA8) for infinite help.
+[rokibhasansagar](https://github.com/rokibhasansagar) & [henloboi](https://github.com/JamieHoSzeYui) & [ElytrA8](https://github.com/ElytrA8) [Deleted Acc but keeping it here as it may return sometime and as a act of gratitude] for infinite help.
