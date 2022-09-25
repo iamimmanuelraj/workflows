@@ -20,6 +20,10 @@ jobs:
           git config --global user.name iamimmanuelraj
           git config --global credential.helper store
           echo "https://iamimmanuelraj:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
+          
+      - name: Package configurations
+        run: |
+          sudo apt update && sudo apt install python3 python3-pip git python3-dev libwebp-dev libz-dev libjpeg-dev libopenjp2-7 libtiff5 libffi-dev libcairo2 neofetch dialog
 
       - name: Clone The Secret Mirror Repository
         run: |
