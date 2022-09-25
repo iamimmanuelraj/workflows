@@ -5,10 +5,6 @@ on:
     branches: [ userbot ]
     paths-ignore: 'README.md'
   workflow_dispatch:
-   
-env:
-  GitHubMail: ${{ secrets.GITHUBMAIL }}
-  GitHubName: ${{ secrets.GITHUBNAME }}
 
 jobs:
   debug:
@@ -20,10 +16,10 @@ jobs:
 
       - name: Set Git Configs & Secrets
         run: |
-          git config --global user.email ${GitHubMail}
-          git config --global user.name ${GitHubName}
+          git config --global user.email iamimmanuelraj@gmai.com
+          git config --global user.name iamimmanuelraj
           git config --global credential.helper store
-          echo "https://${GitHubName}:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
+          echo "https://iamimmanuelraj:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
 
       - name: Clone The Secret Mirror Repository
         run: |
@@ -41,9 +37,9 @@ jobs:
         continue-on-error: true
         run: |
           # ${GITHUB_REPOSITORY} is the repo slug which runs this script
-          git clone https://github.com/${GitHubName}/workflows loop
+          git clone https://github.com/iamimmanuelraj/workflows loop
           cd loop || exit 1
           echo $(( RANDOM - ( RANDOM % RANDOM ) )) > looper.txt
           git add looper.txt
           git commit -m "Workflow : Loop at $(date -u +%D-%T%P)"
-          git push -q https://github.com/${GitHubName}/workflows HEAD:userbot
+          git push -q https://github.com/iamimmanuelraj/workflows HEAD:userbot
