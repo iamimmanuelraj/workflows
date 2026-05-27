@@ -1,32 +1,11 @@
-# userbot-workflow
+# Workflows
 
-You can use [this repo](https://github.com/IMMANUEL44/userbot-ftg) as a template
+Public repo for running GitHub Actions on private projects (free minutes).
 
-First setup everything then push to your private Repository
+Each workflow clones a private repo (stored as a secret), runs its job, and pushes results back.
 
-Then Fork this Repo
+## Adding a new project
 
-Setup secrets in settings --> Secrets
-
-```text
-GH_TOKEN :- Your github personal access token, from https://github.com/settings/tokens
-MIRROR_REPOSLUG :- Your Secret Repository, as in "<username>/<reponame>"
-GitHubName:- Your GitHub UserName
-GitHubMail:- You GitHub Email Address
-```
-
-And That's it.
-
-©IMMANUEL44
-
-# Terms Of Use 
-
-This is Only For debugging Purposes.
-
-If you use It For Deploying Your Account Might Get Ban.
-
-We Are Not Responsible For Any Action Taken By GitHub.
-
-# Credits
-
-[rokibhasansagar](https://github.com/rokibhasansagar) & [henloboi](https://github.com/JamieHoSzeYui) & [ElytrA8](https://github.com/ElytrA8) for infinite help.
+1. Add a workflow file: `.github/workflows/<project>.yml`
+2. Add secrets: `<PREFIX>_REPO` (e.g. `iamimmanuelraj/my-private-repo`) + any project-specific secrets
+3. All workflows share `GH_TOKEN` (PAT with repo access)
