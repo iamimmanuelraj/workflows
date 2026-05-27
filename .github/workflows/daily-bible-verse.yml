@@ -1,0 +1,55 @@
+name: Daily Bible Verse
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+    inputs:
+      verse_override:
+        description: 'Override verse (e.g. "John 3:16")'
+        required: false
+        default: ''
+
+jobs:
+  post-verse:
+    runs-on: macos-latest
+
+    steps:
+      - name: Clone project
+        run: |
+          git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ secrets.BIBLE_REPO }}.git project
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: cd project && bun install
+
+      - name: Install uv
+        run: |
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Run pipeline
+        working-directory: project
+        run: |
+          uv run --with requests --with google-api-python-client --with google-auth scripts/bible_verse_pipeline.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          VERSE_OVERRIDE: ${{ inputs.verse_override }}
+          YOUTUBE_CLIENT_ID: ${{ secrets.BIBLE_YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.BIBLE_YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.BIBLE_YOUTUBE_REFRESH_TOKEN }}
+
+      - name: Push updated history
+        working-directory: project
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add verse_history.json public/verse_config.json
+          git diff --staged --quiet || git commit -m "chore: new verse [skip ci]"
+          git push
