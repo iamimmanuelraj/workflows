@@ -44,6 +44,9 @@ jobs:
           YOUTUBE_CLIENT_ID: ${{ secrets.BIBLE_YOUTUBE_CLIENT_ID }}
           YOUTUBE_CLIENT_SECRET: ${{ secrets.BIBLE_YOUTUBE_CLIENT_SECRET }}
           YOUTUBE_REFRESH_TOKEN: ${{ secrets.BIBLE_YOUTUBE_REFRESH_TOKEN }}
+          POSTIZ_API_KEY: ${{ secrets.POSTIZ_API_KEY }}
+          POSTIZ_API_URL: ${{ secrets.POSTIZ_API_URL }}
+          POSTIZ_INSTAGRAM_ID: ${{ secrets.POSTIZ_INSTAGRAM_ID }}
 
       - name: Push updated history
         working-directory: project
