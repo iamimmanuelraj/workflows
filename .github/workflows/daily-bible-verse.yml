@@ -37,7 +37,7 @@ jobs:
       - name: Run pipeline
         working-directory: project
         run: |
-          uv run --with requests --with google-api-python-client --with google-auth scripts/bible_verse_pipeline.py
+          uv run --with requests --with google-api-python-client --with google-auth --with cloudscraper scripts/bible_verse_pipeline.py
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           VERSE_OVERRIDE: ${{ inputs.verse_override }}
