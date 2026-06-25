@@ -48,6 +48,23 @@ jobs:
           POSTIZ_API_URL: ${{ secrets.POSTIZ_API_URL }}
           POSTIZ_INSTAGRAM_ID: ${{ secrets.POSTIZ_INSTAGRAM_ID }}
 
+
+      - name: Generate verse image
+        working-directory: project
+        run: |
+          uv run --with Pillow scripts/generate_verse_image.py --format square --use-config
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: Post verse image to Instagram
+        working-directory: project
+        run: |
+          uv run --with requests scripts/post_verse_image.py
+        env:
+          POSTIZ_API_KEY: ${{ secrets.POSTIZ_API_KEY }}
+          POSTIZ_API_URL: ${{ secrets.POSTIZ_API_URL }}
+          POSTIZ_INSTAGRAM_ID: ${{ secrets.POSTIZ_INSTAGRAM_ID }}
+
       - name: Push updated history
         working-directory: project
         run: |
