@@ -10,6 +10,10 @@ on:
         required: false
         default: ''
 
+permissions:
+  contents: write
+  copilot-requests: write
+
 jobs:
   post-verse:
     runs-on: macos-latest
@@ -34,12 +38,17 @@ jobs:
           curl -LsSf https://astral.sh/uv/install.sh | sh
           echo "$HOME/.local/bin" >> $GITHUB_PATH
 
+      - name: Install Copilot CLI
+        run: |
+          curl -fsSL https://gh.io/copilot-install | bash
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
       - name: Run pipeline
         working-directory: project
         run: |
           uv run --with requests --with google-api-python-client --with google-auth --with cloudscraper scripts/bible_verse_pipeline.py
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
           VERSE_OVERRIDE: ${{ inputs.verse_override }}
           YOUTUBE_CLIENT_ID: ${{ secrets.BIBLE_YOUTUBE_CLIENT_ID }}
           YOUTUBE_CLIENT_SECRET: ${{ secrets.BIBLE_YOUTUBE_CLIENT_SECRET }}
@@ -53,8 +62,6 @@ jobs:
         working-directory: project
         run: |
           uv run --with Pillow scripts/generate_verse_image.py --format square --use-config
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Post verse image to Instagram
         working-directory: project
