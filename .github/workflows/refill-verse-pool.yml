@@ -1,0 +1,49 @@
+name: Refill Verse Pool
+
+on:
+  schedule:
+    # Daily at 03:17 UTC — quiet window between the 00:00 and 06:00
+    # pipeline runs, so pool writes never race the posting pipeline.
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  copilot-requests: write
+
+jobs:
+  refill:
+    runs-on: macos-latest
+
+    steps:
+      - name: Clone project
+        run: |
+          git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ secrets.BIBLE_REPO }}.git project
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: Install uv
+        run: |
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Install Copilot CLI
+        run: |
+          curl -fsSL https://gh.io/copilot-install | bash
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Refill pool
+        working-directory: project
+        run: |
+          uv run --with requests --with google-api-python-client --with google-auth scripts/refill_verse_pool.py
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Push updated pool
+        working-directory: project
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add verse_pool.json
+          git diff --staged --quiet || git commit -m "chore: refill verse pool [skip ci]"
+          git push
